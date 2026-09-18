@@ -79,6 +79,12 @@ def batched_multi_head_attn(Q: torch.Tensor, K: torch.Tensor):
     stride_sb, stride_sh, stride_sm, stride_sn = S.stride()
 
     # create 3d grid.
-    gride = ((triton.cdiv(M, meta[])), (), B*H)
+    grid = ((triton.cdiv(M, meta[])), (), B*H)
+
+
+
+
+
+
 
 

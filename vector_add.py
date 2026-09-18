@@ -28,7 +28,7 @@ def vector_add(x: torch.tensor, y: torch.tensor, block_size: int = 1024) -> torc
     out = torch.empty_like(x)
     n = x.numel()
 
-    grid = lambda meta: (triton.cdic(n, meta["BLOCK_SIZE"]))    # this will be used during autotuning.
+    grid = lambda meta: (triton.cdiv(n, meta["BLOCK_SIZE"]))    # this will be used during autotuning.
 
     vector_add_kernel[grid](
         x, y, out, n, BLOCK_SIZE=block_size
